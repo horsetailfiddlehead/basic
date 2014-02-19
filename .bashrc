@@ -8,6 +8,9 @@ fi
 # PATH also searches current directory
 PATH=$PATH:~/links:/proc/registry:.
 
+# open up Bash at my home directory
+cd ~
+
 #----------Start up options -------------
 WELCOME=FALSE  #show welcome splash? (must be false for scp or sftp)
 MESSAGE_ME=FALSE  #allow others to message?

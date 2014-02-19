@@ -1,0 +1,12 @@
+[user]
+	name = PatrickMa
+	email = patrick.is@not.here
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive= true
+	ui = true
+
+[core]
+	excludesfile = /cygdrive/d/.gitignore_global

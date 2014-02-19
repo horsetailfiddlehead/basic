@@ -1,8 +1,10 @@
 
 " An example for a vimrc file.
 "
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2008 Dec 17
+" Maintainer:  Patrick Ma	
+" Last change:	2014 Feb 17
+"
+" Taken originally from: Bram Moolenaar's example vimrc
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -110,8 +112,6 @@ nnoremap <C-l> :nohlsearch<CR><C-l>
 
 " map command bclose (or bc) to close current buffer, but not window
 nmap <leader>bc :bn<bar>bd#<CR>
-
-
 
  
 " vim-latex settings "
