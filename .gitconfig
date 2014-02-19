@@ -9,4 +9,4 @@
 	ui = true
 
 [core]
-	excludesfile = /cygdrive/d/.gitignore_global
+	excludesfile = ~/.gitignore_global
