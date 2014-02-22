@@ -98,9 +98,11 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-" "  My additions below -------------------------
-" Set background to improve readbility
+" "  My additions below ""
+"----------------------------------------
+" Set background to improve readbility and the default colorscheme
 set background=dark
+colorscheme desert
 
 " I like line numbers and the ruler
 set number
