@@ -11,11 +11,11 @@ all: vim bash gitignore gitconfig
 	
 vim:
 	@echo 'creating .vimrc'
-	@echo 'source ~/basic/.vimrc' >> ~/.vimrc
+	@echo 'source ~/basic/.vimrc' > ~/.vimrc
 
 bash:
 	@echo 'creating .bashrc'
-	@echo 'source ~/basic/.bashrc' >> ~/.bashrc
+	@echo 'source ~/basic/.bashrc' > ~/.bashrc
 
 # Actually creates a global ignore file, not the specific gitignore file
 gitignore:

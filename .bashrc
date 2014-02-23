@@ -9,7 +9,7 @@ fi
 PATH=$PATH:~/links:/proc/registry:.
 
 # open up Bash at my home directory
-cd ~
+#cd ~
 
 #----------Start up options -------------
 WELCOME=FALSE  #show welcome splash? (must be false for scp or sftp)
