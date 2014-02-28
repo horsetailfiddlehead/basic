@@ -108,6 +108,8 @@ colorscheme desert
 set number
 set laststatus=2
 
+" set the tabstop for easier reading
+set tabstop=2
 
 " add clear search highlight ability to normal screen clear
 nnoremap <C-l> :nohlsearch<CR><C-l>
