@@ -101,7 +101,7 @@ endif
 " "  My additions below ""
 "----------------------------------------
 " Set background to improve readbility and the default colorscheme
-set background=dark
+"set background=dark
 colorscheme desert
 
 " I like line numbers and the ruler
