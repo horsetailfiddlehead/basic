@@ -10,6 +10,14 @@ if [ -f /etc/bash_completion ]; then
 . /etc/bash_completion
 fi
 
+# Git completion
+if [ -f ~/basic/git-prompt.sh ]; then
+	. ~/basic/.git-prompt.sh
+fi
+if [ -f ~/basic/git-completion.bash ]; then
+	. ~/basic/git-completion.bash
+fi
+
 # PATH also searches current directory
 PATH=$PATH:~/links:/proc/registry:.
 
@@ -31,11 +39,11 @@ alias lla="ll -a"
 alias llp="ll |less"
 alias la="ls -a"
 alias ?=man
+alias startxwin='startxwin -fg white -bg black'
 alias windows="startxwin" # start up Xserver windows
 alias endxwin="echo 'this command has not been defined'"
 alias whereami='echo You are here: `pwd`'
 alias grepc="grep --color=auto"
-alias startxwin='startxwin -fg white -bg black'
 
 # a couple helpful bash options
 shopt -s dirspell    # attempts to fix directory misspells
@@ -67,7 +75,7 @@ function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-PS1="\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(parse_git_branch)\[\e[0m\]\n`date`\n$ "
+PS1='\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]\n`date`\n$ '
 
 #use the terminal colours set in DIR_COLORS
 eval "`dircolors -b /etc/DIR_COLORS.256color`"
