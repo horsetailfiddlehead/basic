@@ -11,3 +11,4 @@ IMPORTANT: many configuration files are probabaly hidden, so if you can't find i
 TODO: Here's things I want to add and modify in this file
 * put the rest of my config files in
 * create a make file or script that automatically moves config files to the home directory (or where ever the config file is sourced from).
+* create a python version of the make file, as Make is not natively packaged with gitBash
