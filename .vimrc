@@ -1,4 +1,3 @@
-
 " An example for a vimrc file.
 "
 " Maintainer:  Patrick Ma	
@@ -103,6 +102,9 @@ set laststatus=2
 
 " set the tabstop for easier reading
 set tabstop=2
+
+" set the default window size
+set columns=80
 
 " add clear search highlight ability to normal screen clear
 nnoremap <C-l> :nohlsearch<CR><C-l>
