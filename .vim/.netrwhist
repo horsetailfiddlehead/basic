@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/cygdrive/d/.vim'
+let g:netrw_dirhist_2='/cygdrive/d/.vim/ftplugin'
+let g:netrw_dirhist_3='/cygdrive/d/.vim'
+let g:netrw_dirhist_4='/cygdrive/d/.vim/ftplugin'
+let g:netrw_dirhist_5='/cygdrive/d/School/Senior/Winter/BIOE425/protocols/labw14/group4'
