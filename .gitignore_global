@@ -1,3 +1,25 @@
+# files to globally ignore from git repos
+# For files specific to a repo(s), create a separate .gitignore file
+
+######################################################################
+# .gitignore rules
+# -------------------------------------------------------------------
+#  # a comment - this is ignored
+#  # no .a files
+#  *.a
+#  # but do track lib.a, even though you're ignoring .a files above
+#  !lib.a
+#  # only ignore the root FOO file, not subdir/FOO
+#  /FOO
+#  # ignore all files in the build/ directory
+#  build/
+#  # ignore doc/notes.txt, but not doc/server/arch.txt
+#  doc/*.txt
+#  # ignore all .txt files in the doc/ directory
+#  doc/**/*.txt
+#--------------------------------------------------------------------- 
+######################################################################
+
 # Compiled source #
 ###################
 *.com
@@ -5,6 +27,7 @@
 *.dll
 *.exe
 *.o
+*.out
 *.so
 
 # Packages #
@@ -19,6 +42,16 @@
 *.rar
 *.tar
 *.zip
+*.bz2
+*.bzip
+
+# These are LaTeX non-source files #
+####################################
+*.aux
+*.log
+*.lof
+*.lot
+*.toc
 
 # Logs and databases #
 ######################
