@@ -13,6 +13,10 @@ vim:
 	@echo 'creating .vimrc'
 	@echo 'source ~/basic/.vimrc' > ~/.vimrc
 
+test:
+	touch foo.txt
+	ln -s foo.txt ~/
+
 bash:
 	@echo 'creating .bashrc'
 	@echo 'source ~/basic/.bashrc' > ~/.bashrc
