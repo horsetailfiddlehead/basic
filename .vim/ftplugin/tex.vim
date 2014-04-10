@@ -7,7 +7,7 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_MultipleCompileFormats='dvi,pdf'
 
 " set the default colorscheme to 'slate'
-colorscheme slate
+colorscheme solarized
 
 " autex mappings
 
