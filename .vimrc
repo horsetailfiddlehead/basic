@@ -1,7 +1,7 @@
 " An example for a vimrc file.
 "
 " Maintainer:  Patrick Ma	
-" Last change:	2014 Feb 17
+" Last change:	2014 Apr 19
 "
 " Taken originally from: Bram Moolenaar's example vimrc
 "
@@ -104,13 +104,18 @@ set laststatus=2
 set tabstop=2
 
 " set the default window size
-set columns=80
+set columns=85
 
 " add clear search highlight ability to normal screen clear
 nnoremap <C-l> :nohlsearch<CR><C-l>
 
 " map command bclose (or bc) to close current buffer, but not window
 nmap <leader>bc :bn<bar>bd#<CR>
+
+" trim a line to default length
+nnoremap <leader>f gqhj
+" trim all lines to vim's default line length
+nmap <leader>fa <leader>f<leader>fa
 
  
 " vim-latex settings "

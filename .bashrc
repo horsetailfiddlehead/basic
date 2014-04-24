@@ -38,6 +38,7 @@ alias llp="ll |less"
 alias la="ls -a"
 alias ?=man
 alias startxwin='startxwin -fg white -bg black'
+alias xterm='xterm -fg white -bg black'
 alias windows="startxwin" # start up Xserver windows
 alias endxwin="echo 'this command has not been defined'"
 alias whereami='echo You are here: `pwd`'
@@ -77,6 +78,13 @@ PS1='\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]\n`date`\n$ '
 
 #use the terminal colours set in DIR_COLORS
 eval "`dircolors -b /etc/DIR_COLORS.256color`"
+
+# set terminal to the right number of colors
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+        export TERM='xterm-256color'
+else
+        export TERM='xterm-color'
+fi
 
 #------ DISPLAY WELCOME SCREEN -----
 if [ $WELCOME = TRUE ]; then
