@@ -1,7 +1,7 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='D:'
-let g:netrw_dirhist_2='D:/Dropbox'
-let g:netrw_dirhist_3='D:/Dropbox/basic'
-let g:netrw_dirhist_4='D:/Dropbox/basic/.vim'
-let g:netrw_dirhist_5='D:/Dropbox/basic/.vim/plugin'
+let g:netrw_dirhist_1='/cygdrive/d/School/Senior/Spring/299EE/hw2/ontime/dmersha/HW--2/problem2/question2'
+let g:netrw_dirhist_2='/cygdrive/d/School/FuNLab/Modem'
+let g:netrw_dirhist_3='/cygdrive/d/School/Senior/Spring/299EE/hw1'
+let g:netrw_dirhist_4='/cygdrive/d/School/Senior/Spring/299EE/hw1/grades'
+let g:netrw_dirhist_5='/cygdrive/d/School/Senior/Spring/QSCI483/homework5'

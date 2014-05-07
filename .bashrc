@@ -26,6 +26,8 @@ PATH=$PATH:~/links:/proc/registry:.
 WELCOME=FALSE  #show welcome splash? (must be false for scp or sftp)
 MESSAGE_ME=FALSE  #allow others to message?
 export HISTCONTROL=erasedups
+export HISTSIZE=50
+export HISTIGNORE="pwd:ls:la:lla"
 
 # User specific aliases and functions
 alias rm="rm -iv"
