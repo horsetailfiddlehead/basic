@@ -1,8 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/cygdrive/d/School/Senior/Spring/299EE/hw2/ontime/dmersha/HW--2/problem2/question2'
-let g:netrw_dirhist_2='/cygdrive/d/School/FuNLab/Modem'
-let g:netrw_dirhist_3='/cygdrive/d/School/Senior/Spring/299EE/hw1'
-let g:netrw_dirhist_4='/cygdrive/d/School/Senior/Spring/299EE/hw1/grades'
-let g:netrw_dirhist_5='/cygdrive/d/School/Senior/Spring/QSCI483/homework5'
-let g:netrw_dirhist_6='/cygdrive/d/School/Senior/Spring/299EE/hw2'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/cygdrive/d/School/Senior/Spring/299EE'
+let g:netrw_dirhist_2='/cygdrive/d/School/Senior/Spring/299EE/hw4'
+let g:netrw_dirhist_3='/cygdrive/d/School/Senior/Spring/299EE/hw4/grades'
+let g:netrw_dirhist_4='D:/School/Senior/Spring/capstone/Bike-Accessories/learning/BikeHeadlightMount'

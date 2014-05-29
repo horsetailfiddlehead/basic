@@ -41,7 +41,7 @@ alias la="ls -a"
 alias ?=man
 alias startxwin='startxwin -fg white -bg black'
 alias xterm='xterm -fg white -bg black'
-alias windows="startxwin" # start up Xserver windows
+alias windows="startxwin -- -multimonitors" # start up Xserver windows
 alias endxwin="echo 'this command has not been defined'"
 alias whereami='echo You are here: `pwd`'
 alias grepc="grep --color=auto"

@@ -20,8 +20,11 @@ imap <buffer> EIT <Plug>Tex_InsertItemOnThisLine
 
 " In Windows, use a different pdf viewer
 "if has('win32')
-"	let g:Tex_ViewRule_pdf = 'xpdf'
+"	let g:Tex_ViewRule_pdf = 'xpdf -cont'
 "endif
+
+" open xpdf with continuous scrolling
+let g:Tex_ViewRule_pdf = 'xpdf -cont'
 
 " usually I want figures to have a specified size
 let g:Tex_Env_figure = "\\begin{figure}[<+htpb+>]\<CR>\\centering\<CR>\\includegraphics[<+width,height+>]{<+file+>}\<CR>\\caption{<+caption text+>}\<CR>\\label{fig:<+label+>}\<CR>\\end{figure}<++>"
