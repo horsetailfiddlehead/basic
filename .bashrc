@@ -12,7 +12,9 @@ fi
 
 # Git completion
 if [ -f ~/basic/git-prompt.sh ]; then
-	. ~/basic/.git-prompt.sh
+	. ~/basic/git-prompt.sh
+else
+	echo "not found"
 fi
 if [ -f ~/basic/git-completion.bash ]; then
 	. ~/basic/git-completion.bash
