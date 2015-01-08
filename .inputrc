@@ -1,3 +1,4 @@
 # .inputrc
+# configuration file for Bash's Readline
 
 set completion-ignore-case on
