@@ -47,7 +47,6 @@ alias windows="startxwin -- -multimonitors" # start up Xserver windows
 alias endxwin="echo 'this command has not been defined'"
 alias whereami='echo You are here: `pwd`'
 alias grepc="grep --color=auto"
-alias listprogs="cat *.txt" #No idea how this works, but lists all installed programs or something
 
 # a couple helpful bash options
 shopt -s dirspell    # attempts to fix directory misspells
