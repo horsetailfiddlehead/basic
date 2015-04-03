@@ -9,8 +9,11 @@ IMPORTANT: many configuration files are probabaly hidden, so if you can't find i
 
 Setup of the repo:
 1) Download this repo from Dropbox or Github.
+1a) to clone from github: https://github.com/horsetailfiddlehead/basic
 2) Create a new file with the proper name (i.e.: .bashrc, .gitignore, etc.)
-3) Link the file to the file in this repo (do not move the file, or it will not update properly)
+3) Link the file to the file in this repo (do not move the file, or it will not
+		update properly). A symbolic link is preferred for compatibility across
+		systems/drives.
 4) Alternately, instruct the file to source the associated file in this repo.
 
 TODO: Here's things I want to add and modify in this file
