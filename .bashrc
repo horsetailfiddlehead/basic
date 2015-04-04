@@ -49,6 +49,11 @@ alias windows="startxwin -- -multimonitors" # start up Xserver windows
 alias endxwin="echo 'this command has not been defined'"
 alias whereami='echo You are here: `pwd`'
 alias grepc="grep --color=auto"
+if [ `uname -o` = "Cygwin" ]; then
+	alias shutdown="exit"
+elif [ `uname -o` = "GNU/Linux" ]; then 
+	alias shutdown="sudo halt"
+fi
 
 # a couple helpful bash options
 shopt -s dirspell    # attempts to fix directory misspells
