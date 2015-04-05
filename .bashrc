@@ -49,11 +49,12 @@ alias windows="startxwin -- -multimonitors" # start up Xserver windows
 alias endxwin="echo 'this command has not been defined'"
 alias whereami='echo You are here: `pwd`'
 alias grepc="grep --color=auto"
-if [ `uname -o` = "Cygwin" ]; then
+if [ `uname -o` = "Cygwin" ]; then # shortcut to shutdown terminal
 	alias shutdown="exit"
 elif [ `uname -o` = "GNU/Linux" ]; then 
-	alias shutdown="sudo halt"
+	alias shutdown="sudo halt" 
 fi
+alias nmap="/cygdrive/c/Program\ Files\ \(x86\)/Nmap/nmap.exe" # run NMap
 
 # a couple helpful bash options
 shopt -s dirspell    # attempts to fix directory misspells
