@@ -117,6 +117,21 @@ nnoremap <leader>f gqhj
 " trim all lines to vim's default line length
 nmap <leader>fa <leader>f<leader>fa
 
+" nifty command to see the difference between a loaded file and the newest
+" version on disk
+" Use this command by typing :DiffOrig
+" To load original, type :e! :only
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
+" Defines vim folding option as 'indent', but also allows manual folding 
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=indent
+  au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
+augroup END
  
 " vim-latex settings "
 " ---------------------------------------
@@ -150,12 +165,3 @@ set sw=2
 set iskeyword+=:
 "===============================================================================
 
-" nifty command to see the difference between a loaded file and the newest
-" version on disk
-" Use this command by typing :DiffOrig
-" To load original, type :e! :only
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
-endif
