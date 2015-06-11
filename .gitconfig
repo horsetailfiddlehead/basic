@@ -10,5 +10,6 @@
 
 [core]
 	excludesfile = ~/.gitignore_global
+	ignorecase = true
 [push]
 	default = simple
