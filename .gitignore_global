@@ -69,6 +69,11 @@
 ehthumbs.db
 Thumbs.db
 
+# Private or terminal specific files #
+######################################
+.git-credentials
+*/git/credentials
+
 # temporary files #
 ###################
 *.*~
