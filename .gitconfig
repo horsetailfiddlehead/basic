@@ -11,5 +11,8 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	ignorecase = true
+	autocrlf = true
 [push]
 	default = simple
+[credential]
+	helper = /cygdrive/C/Users/Patrick/AppData/Roaming/GitCredStore/git-credential-winstore.exe
