@@ -49,6 +49,7 @@ alias windows="startxwin -- -multimonitors" # start up Xserver windows
 alias endxwin="echo 'this command has not been defined'"
 alias whereami='echo You are here: `pwd`'
 alias grepc="grep --color=auto"
+alias egrep="egrep --color=auto"
 if [ `uname -o` = "Cygwin" ]; then # shortcut to shutdown terminal
 	alias shutdown="exit"
 elif [ `uname -o` = "GNU/Linux" ]; then 
