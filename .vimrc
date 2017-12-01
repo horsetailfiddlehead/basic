@@ -109,6 +109,9 @@ set tabstop=2
 " set the default window size
 set columns=85
 
+" set whitespace marks. Visible using 'set list'
+set listchars=eol:¶,trail:¬,tab:»-,extends:>,precedes:<,space:·
+
 " add clear search highlight ability to normal screen clear
 nnoremap <C-l> :nohlsearch<CR><C-l>
 
