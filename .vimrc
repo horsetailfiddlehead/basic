@@ -100,6 +100,9 @@ colorscheme desert
 set number
 set laststatus=2
 
+" Set the font for GUI windows
+set guifont=Lucida_Console:h10:cANSI:qDRAFT
+
 " set the tabstop for easier reading
 set tabstop=2
 

@@ -16,3 +16,6 @@
 	default = simple
 [credential]
 	helper = /cygdrive/C/Users/Patrick/AppData/Roaming/GitCredStore/git-credential-winstore.exe
+[alias]
+	tree = log --graph --oneline --decorate --color
+	treeall = log --graph --oneline --decorate --all --color
