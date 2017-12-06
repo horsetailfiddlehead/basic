@@ -19,3 +19,6 @@
 [alias]
 	tree = log --graph --oneline --decorate --color
 	treeall = log --graph --oneline --decorate --all --color
+[merge]
+	tool = gvimdiff
+	conflictstyle = diff3

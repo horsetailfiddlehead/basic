@@ -89,6 +89,39 @@ else
 
 endif " has("autocmd")
 
+" MyDiff is required for VimDiff on Windows machines
+if has("Win32")
+	set diffexpr=MyDiff()
+	function MyDiff()
+	  let opt = '-a --binary '
+	  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+	  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+	  let arg1 = v:fname_in
+	  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+	  let arg2 = v:fname_new
+	  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+	  let arg3 = v:fname_out
+	  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+	  if $VIMRUNTIME =~ ' '
+		if &sh =~ '\<cmd'
+		  if empty(&shellxquote)
+			let l:shxq_sav = ''
+			set shellxquote&
+		  endif
+		  let cmd = '"' . $VIMRUNTIME . '\diff"'
+		else
+		  let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+		endif
+	  else
+		let cmd = $VIMRUNTIME . '\diff'
+	  endif
+	  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+	  if exists('l:shxq_sav')
+		let &shellxquote=l:shxq_sav
+	  endif
+	endfunction
+endif
+
 
 " "  My additions below ""
 "----------------------------------------
@@ -106,11 +139,14 @@ set guifont=Lucida_Console:h10:cANSI:qDRAFT
 " set the tabstop for easier reading
 set tabstop=2
 
+" set visual indicator of ideal line length
+set colorcolumn=80
+
 " set the default window size
 set columns=85
 
 " set whitespace marks. Visible using 'set list'
-set listchars=eol:¶,trail:¬,tab:»-,extends:>,precedes:<,space:·
+set listchars=eol:¶,trail:Þ,tab:»-,extends:>,precedes:<,space:·
 
 " add clear search highlight ability to normal screen clear
 nnoremap <C-l> :nohlsearch<CR><C-l>
