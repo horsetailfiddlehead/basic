@@ -43,6 +43,7 @@ alias lla="ll -a"
 alias llp="ll |less"
 alias la="ls -a"
 alias ?=man
+alias grep="grep --color" # highlight search term
 alias startxwin='startxwin -fg white -bg black'
 alias xterm='xterm -fg white -bg black'
 alias windows="startxwin -- -multimonitors" # start up Xserver windows
@@ -56,6 +57,7 @@ elif [ `uname -o` = "GNU/Linux" ]; then
 	alias shutdown="sudo halt" 
 fi
 alias nmap="/cygdrive/c/Program\ Files\ \(x86\)/Nmap/nmap.exe" # run NMap
+arduino() { arduino.exe "$@" > /dev/null 2>&1;} # open arduino w/o console output
 
 # a couple helpful bash options
 shopt -s dirspell    # attempts to fix directory misspells
@@ -87,7 +89,7 @@ function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-export PS1='\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]\n`date`\n$ '
+export PS1="\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]\n`date`"$'\n$ '
 
 #use the terminal colours set in DIR_COLORS
 eval "`dircolors -b /etc/DIR_COLORS.256color`"
