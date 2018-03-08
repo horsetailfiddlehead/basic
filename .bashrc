@@ -16,10 +16,12 @@ fi
 if [ -f ~/basic/git-prompt.sh ]; then
 	. ~/basic/git-prompt.sh
 else
-	echo "not found"
+	echo "git-prompt.sh not found"
 fi
 if [ -f ~/basic/git-completion.bash ]; then
 	. ~/basic/git-completion.bash
+else
+	echo "git-completion.sh not found"
 fi
 
 # PATH also searches current directory
@@ -89,7 +91,7 @@ function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-export PS1="\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]\n`date`"$'\n$ '
+export PS1='\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]'$'\n`date`\n$ '
 
 #use the terminal colours set in DIR_COLORS
 eval "`dircolors -b /etc/DIR_COLORS.256color`"
