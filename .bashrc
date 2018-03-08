@@ -91,7 +91,8 @@ function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-export PS1='\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]'$'\n\D{%c}\n$ '
+export GIT_PS1_SHOWSTASHSTATE=true # marks when changes stashed
+export PS1='\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[36m\]$(__git_ps1)\[\e[0m\]'$'\n\D{%c}\n$ '
 
 #use the terminal colours set in DIR_COLORS
 eval "`dircolors -b /etc/DIR_COLORS.256color`"
