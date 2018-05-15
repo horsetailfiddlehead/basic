@@ -142,8 +142,11 @@ set tabstop=2
 " set visual indicator of ideal line length
 set colorcolumn=80
 
-" set the default window size
-set columns=85
+" set the default window size (for non-CLI windows)
+if has('gui_running')
+	set columns=90
+	set lines=40
+endif
 
 " set whitespace marks. Visible using 'set list'
 set listchars=eol:¶,trail:Þ,tab:»-,extends:>,precedes:<,space:·
@@ -174,6 +177,11 @@ augroup vimrc
   au BufReadPre * setlocal foldmethod=indent
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
+
+" C/C++ code-specific settings"
+" ---------------------------------------
+"
+set cinoptions=l1 " override default indenting rule to 1 tab
  
 " vim-latex settings "
 " ---------------------------------------
