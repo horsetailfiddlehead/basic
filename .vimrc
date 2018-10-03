@@ -126,8 +126,13 @@ endif
 " "  My additions below ""
 "----------------------------------------
 " Set background to improve readbility and the default colorscheme
-"set background=dark
+set background=dark
 colorscheme desert
+
+" Generally, terminals support 256 colors, but only claim 8
+if &t_Co > 2 || has("gui_running")
+	set t_Co=256
+endif
 
 " I like line numbers and the ruler
 set number
