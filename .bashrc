@@ -95,7 +95,7 @@ export GIT_PS1_SHOWSTASHSTATE=true # marks when changes stashed
 export PS1='\n\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[36m\]$(__git_ps1)\[\e[0m\]'$'\n\D{%c}\n$ '
 
 #use the terminal colours set in DIR_COLORS
-eval "`dircolors -b /etc/DIR_COLORS.256color`"
+eval "`dircolors -b ~/basic/.dir_colors/DIR_COLORS.256color`"
 
 # set terminal to the right number of colors
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
