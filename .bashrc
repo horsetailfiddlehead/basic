@@ -16,10 +16,12 @@ fi
 if [ -f ~/basic/git-prompt.sh ]; then
 	. ~/basic/git-prompt.sh
 else
-	echo "git-prompt not found"
+	echo "git feature not found -- install git-prompt.sh"
 fi
 if [ -f ~/basic/git-completion.bash ]; then
 	. ~/basic/git-completion.bash
+else
+	echo "git feature not found -- install git-completion.bash"
 fi
 
 # PATH also searches current directory
