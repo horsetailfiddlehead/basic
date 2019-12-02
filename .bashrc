@@ -16,7 +16,7 @@ fi
 if [ -f ~/basic/git-prompt.sh ]; then
 	. ~/basic/git-prompt.sh
 else
-	echo "not found"
+	echo "git-prompt not found"
 fi
 if [ -f ~/basic/git-completion.bash ]; then
 	. ~/basic/git-completion.bash
@@ -29,6 +29,7 @@ PATH=$PATH:~/links:/proc/registry:.
 #----------Start up options -------------
 WELCOME=FALSE  #show welcome splash? (must be false for scp or sftp)
 MESSAGE_ME=FALSE  #allow others to message?
+set completion-ignore-case On
 export HISTCONTROL=erasedups
 export HISTSIZE=50
 export HISTIGNORE="pwd:ls:la:lla"
