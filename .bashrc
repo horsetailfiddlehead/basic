@@ -88,7 +88,21 @@ function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-export PS1='\n\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]\n`date`\n$ '
+# Determine active Python virtualenv details.
+function set_virtualenv () {
+  if test -z "$VIRTUAL_ENV" ; then
+      PYTHON_VIRTUALENV=""
+  else
+      PYTHON_VIRTUALENV="[`basename \"$VIRTUAL_ENV\"`] "
+  fi
+}
+
+function set_bash_prompt () {
+	set_virtualenv
+	export PS1='\n${PYTHON_VIRTUALENV}\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]\n`date`\n$ '
+}
+
+PROMPT_COMMAND=set_bash_prompt # re-eval prompt before printing
 
 #use the terminal colours set in DIR_COLORS
 eval "`dircolors -b /etc/DIR_COLORS.256color`"
