@@ -41,11 +41,12 @@ alias rm="rm -iv"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias ls="ls --color=auto"
-alias ll="ls -l"
+alias ll="ls -l -h"
 alias lla="ll -a"
 alias llp="ll |less"
 alias la="ls -a"
 alias ?=man
+alias grep="grep --color" # highlight search term
 alias startxwin='startxwin -fg white -bg black'
 alias xterm='xterm -fg white -bg black'
 alias windows="startxwin -- -multimonitors" # start up Xserver windows
@@ -59,6 +60,7 @@ elif [ `uname -o` = "GNU/Linux" ]; then
 	alias shutdown="sudo halt" 
 fi
 alias nmap="/cygdrive/c/Program\ Files\ \(x86\)/Nmap/nmap.exe" # run NMap
+arduino() { arduino.exe "$@" > /dev/null 2>&1;} # open arduino w/o console output
 
 # a couple helpful bash options
 shopt -s dirspell    # attempts to fix directory misspells
@@ -101,13 +103,14 @@ function set_virtualenv () {
 
 function set_bash_prompt () {
 	set_virtualenv
-	export PS1='\n${PYTHON_VIRTUALENV}\[\e[32m\]\u@\h: \[\e[33m\]\w$(__git_ps1)\[\e[0m\]\n`date`\n$ '
+	export GIT_PS1_SHOWSTASHSTATE=true # marks when changes stashed
+	export PS1='\n${PYTHON_VIRTUALENV}\[\e[32m\]\u@\h: \[\e[33m\]\w\[\e[36m\]$(__git_ps1)\[\e[0m\]'$'\n\D{%c}\n$ '
 }
 
 PROMPT_COMMAND=set_bash_prompt # re-eval prompt before printing
 
 #use the terminal colours set in DIR_COLORS
-eval "`dircolors -b /etc/DIR_COLORS.256color`"
+eval "`dircolors -b ~/basic/.dir_colors/DIR_COLORS.256color`"
 
 # set terminal to the right number of colors
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then

@@ -5,4 +5,7 @@ if [ `uname -o` = "Cygwin" ]; then
 elif [ `uname -o` = "GNU/Linux" ]; then
 	echo "for Linux build"
 	source $HOME/.bashrc
+else
+	echo "for other build"
+	source $HOME/.bashrc
 fi
