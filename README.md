@@ -16,6 +16,8 @@ Setup of the repo:
 		systems/drives.
 4) Alternately, instruct the file to source the associated file in this repo.
 
+GitK configuration: copy or link `gitk_config` to `~/.config/git/gitk` _or_ `%HOMEPATH%\.gitk`
+
 TODO: Here's things I want to add and modify in this file
 * put the rest of my config files in
 * create a make file or script that automatically moves config files to the home directory (or where ever the config file is sourced from).
