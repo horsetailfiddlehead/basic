@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Automatically prints branch description if it exists
+#
+#NAME=$(git branch | grep '*' | sed 's/* //') 
+NAME=$(git rev-parse --abbrev-ref HEAD) # <- This might be easier to do than ^
+DESCRIPTION=$(git config branch."$NAME".description)
+if [ -n "$DESCRIPTION" ]
+then
+    echo "----------------------------- Branch Description -------------------------------"
+    echo "$DESCRIPTION"
+fi
