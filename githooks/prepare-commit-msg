@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # An example hook script to prepare the commit log message.
 # Called by "git commit" with the name of the file that has the
@@ -29,12 +29,13 @@ SHA1=$3
 git rev-parse --quiet --verify MERGE_HEAD &> /dev/null
 result=$?
 if [ $result -eq 0 ]; then
-	NAME=$(git rev-parse --abbrev-ref HEAD) 
+	NAME=$(git name-rev --name-only MERGE_HEAD) # translate SHA1 to our likely branch
 	DESCRIPTION=$(git config branch."$NAME".description)
+	DESCRIPTION=${DESCRIPTION//$'\n'/\\n}  # Need to replace newlines with literal for sed
 	if [ ${#DESCRIPTION} -ne 0 ]; then
 		MATCH="Merge.*"
 		INSERT="Branch description:\n$DESCRIPTION"
-		sed -i "s/\($MATCH\)/\1\n\n$INSERT/" $COMMIT_MSG_FILE
+		sed -E -i "s@($MATCH)@\1\n\n$INSERT@" $COMMIT_MSG_FILE
 	fi
 fi
 
