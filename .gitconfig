@@ -23,3 +23,6 @@
 [merge]
 	tool = gvimdiff
 	conflictstyle = diff3
+	ff = false
+[commit]
+	verbose = true

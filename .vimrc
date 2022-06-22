@@ -220,3 +220,14 @@ set sw=2
 set iskeyword+=:
 "===============================================================================
 
+" Set and create backup and swap directories as needed
+if &backup
+	set backupdir=$HOME/.vim/.backup//
+	if !isdirectory(&backupdir)
+		call mkdir(&backupdir, "p")
+	endif
+endif
+set directory=$HOME/.vim/.swap//
+if !isdirectory(&directory)
+	call mkdir(&directory, "p")
+endif
