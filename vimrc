@@ -177,7 +177,7 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-" Defines vim folding option as 'indent', but also allows manual folding 
+" Defines vim folding option as 'indent', but also allows manual folding
 augroup vimrc
   au BufReadPre * setlocal foldmethod=indent
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
@@ -187,7 +187,7 @@ augroup END
 " ---------------------------------------
 "
 set cinoptions=l1 " override default indenting rule to 1 tab
- 
+
 " vim-latex settings "
 " ---------------------------------------
 " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
@@ -230,4 +230,11 @@ endif
 set directory=$HOME/.vim/.swap//
 if !isdirectory(&directory)
 	call mkdir(&directory, "p")
+endif
+
+" Set VimDiff options
+if &diff
+	" map ']' and '[' to jump to next/prev diff
+	map ] ]c
+	map [ [c
 endif
