@@ -26,3 +26,11 @@
 	ff = false
 [commit]
 	verbose = true
+[fetch]
+	prune = true
+[rebase]
+	autosquash = true
+[diff]
+	colorMoved = zebra
+[help]
+	autocorrect = 50

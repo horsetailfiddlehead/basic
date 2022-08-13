@@ -2,11 +2,27 @@
 
 # Automatically prints branch description if it exists
 #
-#NAME=$(git branch | grep '*' | sed 's/* //') 
+
+# If we have a STDIN, use it, otherwise get one
+if tty >/dev/null 2>&1; then
+  TTY=$(tty)
+else
+  TTY=/dev/tty
+fi
+
+#NAME=$(git symbolic-ref --short HEAD)
 NAME=$(git rev-parse --abbrev-ref HEAD) # <- This might be easier to do than ^
 DESCRIPTION=$(git config branch."$NAME".description)
 if [ -n "$DESCRIPTION" ]
 then
     echo "----------------------------- Branch Description -------------------------------"
     echo "$DESCRIPTION"
+	else
+		echo "No branch description found."
+		read -p "Write a description?[y/N] " -t 5 REPLY < "$TTY"
+		if [[ ${REPLY} =~ [yY] ]]; then
+			git branch --edit-description < "$TTY"
+		else
+			echo "Consider writing one with git branch --edit-description"
+		fi
 fi
