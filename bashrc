@@ -1,5 +1,11 @@
 # .bashrc
 
+## If non-interactive, do nothing
+case $- in
+	*i*) ;;
+		*) return ;;
+esac
+
 echo "loading settings..."
 
 # Source global definitions
@@ -56,8 +62,8 @@ alias grepc="grep --color=auto"
 alias egrep="egrep --color=auto"
 if [ `uname -o` = "Cygwin" ]; then # shortcut to shutdown terminal
 	alias shutdown="exit"
-elif [ `uname -o` = "GNU/Linux" ]; then 
-	alias shutdown="sudo halt" 
+elif [ `uname -o` = "GNU/Linux" ]; then
+	alias shutdown="sudo halt"
 fi
 alias nmap="/cygdrive/c/Program\ Files\ \(x86\)/Nmap/nmap.exe" # run NMap
 arduino() { arduino.exe "$@" > /dev/null 2>&1;} # open arduino w/o console output
@@ -65,7 +71,7 @@ arduino() { arduino.exe "$@" > /dev/null 2>&1;} # open arduino w/o console outpu
 # a couple helpful bash options
 shopt -s dirspell    # attempts to fix directory misspells
 shopt -s cdspell     # attempts to fix cd misspells
-shopt -s nocaseglob  # case-insensitive auto-complete 
+shopt -s nocaseglob  # case-insensitive auto-complete
 shopt -s checkwinsize #auto-adjusts COL and LINE to window
 shopt -s dotglob     # includes dot-files in glob
 export EDITOR=vim
