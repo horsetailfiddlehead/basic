@@ -177,11 +177,16 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
+" Folding settings
+" --------------------------------------
 " Defines vim folding option as 'indent', but also allows manual folding
 augroup vimrc
   au BufReadPre * setlocal foldmethod=indent
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
+
+set foldlevelstart=20
+"===============================================================================
 
 " C/C++ code-specific settings"
 " ---------------------------------------
