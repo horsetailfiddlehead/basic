@@ -220,6 +220,12 @@ set sw=2
 set iskeyword+=:
 "===============================================================================
 
+" YAML file settings "
+"-----------------------------------------
+autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
+"===============================================================================
+
 " Set and create backup and swap directories as needed
 if &backup
 	set backupdir=$HOME/.vim/.backup//
