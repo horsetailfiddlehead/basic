@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+
+# Print a message asking if files have been checked with pylint and mypy
+
+echo "\033[38;5;167mHave you checked your files for lint errors?\033[0m"
