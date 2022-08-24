@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Skip this hook when flag set
+[[ ${SKIP_POST_CHECKOUT_HOOK} == 1 ]] && exit 0
+
 # Automatically prints branch description if it exists
 #
 

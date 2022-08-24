@@ -1,0 +1,73 @@
+#!/usr/bin/bash
+
+# Capture stdin arguments
+IFS=' ' read -r LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA
+
+echo "LOCAL_ref: ${LOCAL_REF}"
+echo "REMOTE_ref: ${REMOTE_REF}"
+
+# Determine changed files between HEAD and remote branch tip.
+if [[ ${REMOTE_SHA} == "0000000000000000000000000000000000000000" ]]; then
+	echo -e "\033[38;5;214mYou are pushing a new branch. I can't do that yet. Better lint this yourself.\033[0m"
+	exit 1
+fi
+if [[ ${LOCAL_SHA} == "0000000000000000000000000000000000000000" ]]; then
+	echo -e "\033[4;49;33mYou are deleting a branch. Better be sure you mean it.\033[0m"
+	exit 1
+fi
+
+BASE_OBJ=$(git merge-base $LOCAL_SHA $REMOTE_SHA)
+echo "Common commit between $LOCAL_SHA and $REMOTE_SHA is $BASE_OBJ"
+
+# BUG: list of changed files doesn't account for deleted files
+CHANGED_FILES=$(git diff --name-only $LOCAL_SHA $BASE_OBJ)
+echo "The following files were touched:"
+printf "\033[2;33m${CHANGED_FILES}\n\033[0m"
+
+PYTHON_FILES=$(grep -iE "\.py" <<< ${CHANGED_FILES})
+YAML_FILES=$(grep -iE "\.y[a]?ml" <<< ${CHANGED_FILES})
+echo "linting following python files:"
+echo -e "\033[2;33m $PYTHON_FILES \033[0m"
+echo "linting following yaml files:"
+echo -e "\033[2;33m $YAML_FILES \033[0m"
+
+# do not check any uncommitted changes to repo
+SKIP_POST_CHECKOUT_HOOK=1 git stash push --keep-index --quiet
+
+abort_push() {
+	# Before aborting, undo our changes to working tree and index
+	SKIP_POST_CHECKOUT_HOOK=1 git stash pop --index --quiet
+	exit 1
+}
+
+if [[ -n ${PYTHON_FILES} ]]; then
+	# execute pylint tests on python files only
+	if pylint --rcfile=.pylintrc ${PYTHON_FILES}; then
+		echo -e "\033[1;32mLinting successful.\033[0m"
+	else
+		echo -e "\033[38;5;167mError linting python files. Aborting push.\033[0m"
+		abort_push
+	fi
+
+	# execute mypy on python files only
+	if mypy --config-file mypy.ini ${PYTHON_FILES}; then
+		echo -e "\033[1;32mTypechecking successful.\033[0m"
+	else
+		echo -e "\033[38;5;167mEncountered type issues with python files. Aborting push.\033[0m"
+		abort_push
+	fi
+fi
+
+# execute yamllint on yaml files if present
+if [[ -n ${YAML_FILES} ]] && [[ -e $(which yamllint) ]]; then
+	echo -e "yamllint installed. Linting yaml files: ${YAML_FILES}"
+	if yamllint --config-data relaxed ${YAML_FILES}; then
+		echo -e "\033[1;32mLinting successful.\033[0m"
+	else
+		echo -e "\033[38;5;167mEncountered lint issues with yaml files. Aborting push.\033[0m"
+		abort_push
+	fi
+fi
+
+# Replace any uncommitted changes in the repo
+SKIP_POST_CHECKOUT_HOOK=1 git stash pop --index --quiet
