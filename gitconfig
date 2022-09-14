@@ -11,7 +11,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	ignorecase = true
-	autocrlf = true
+	autocrlf = input
 [push]
 	default = simple
 [credential]
@@ -24,6 +24,7 @@
 	tool = gvimdiff
 	conflictstyle = diff3
 	ff = false
+	branchdesc = true
 [commit]
 	verbose = true
 [fetch]
