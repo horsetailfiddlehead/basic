@@ -3,6 +3,13 @@
 # Skip this hook when flag set
 [[ ${SKIP_POST_CHECKOUT_HOOK} == 1 ]] && exit 0
 
+# Skip this hook when rebasing
+BRANCH_NAME=$(git branch | grep '*' | sed 's/* //')
+if [[ $BRANCH_NAME == *"no branch"* ]]; then
+	echo "in a headless branch, skipping post-checkout hook"
+	exit 0
+fi
+
 # Automatically prints branch description if it exists
 #
 
