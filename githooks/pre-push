@@ -32,11 +32,25 @@ echo "linting following yaml files:"
 echo -e "\033[2;33m $YAML_FILES \033[0m"
 
 # do not check any uncommitted changes to repo
-SKIP_POST_CHECKOUT_HOOK=1 git stash push --keep-index --quiet
+if ! git update-index --refresh && git diff-index --quiet @ -- ; then
+	SKIP_POST_CHECKOUT_HOOK=1 git stash push --keep-index --quiet
+	PRE_PUSH_STASH_CHANGES=1
+	echo "Stashing dirty files..."
+fi
+
+unstash() {
+	# Replace any uncommitted changes in the repo
+	# Attempts to recreate the index during the process
+	if [[ $PRE_PUSH_STASH_CHANGES ]]; then
+		echo "Retrieving index and working tree..."
+		SKIP_POST_CHECKOUT_HOOK=1 git stash pop --index --quiet
+		unset PRE_PUSH_STASH_CHANGES
+	fi
+}
 
 abort_push() {
 	# Before aborting, undo our changes to working tree and index
-	SKIP_POST_CHECKOUT_HOOK=1 git stash pop --index --quiet
+	unstash
 	exit 1
 }
 
@@ -70,4 +84,4 @@ if [[ -n ${YAML_FILES} ]] && [[ -e $(which yamllint) ]]; then
 fi
 
 # Replace any uncommitted changes in the repo
-SKIP_POST_CHECKOUT_HOOK=1 git stash pop --index --quiet
+unstash
