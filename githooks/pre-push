@@ -24,8 +24,8 @@ CHANGED_FILES=$(git diff --name-only $LOCAL_SHA $BASE_OBJ)
 echo "The following files were touched:"
 printf "\033[2;33m${CHANGED_FILES}\n\033[0m"
 
-PYTHON_FILES=$(grep -iE "\.py" <<< ${CHANGED_FILES})
-YAML_FILES=$(grep -iE "\.y[a]?ml" <<< ${CHANGED_FILES})
+PYTHON_FILES=$(grep -iE "\.py$" <<< ${CHANGED_FILES})
+YAML_FILES=$(grep -iE "\.y[a]?ml$" <<< ${CHANGED_FILES})
 echo "linting following python files:"
 echo -e "\033[2;33m $PYTHON_FILES \033[0m"
 echo "linting following yaml files:"
