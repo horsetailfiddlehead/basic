@@ -73,9 +73,16 @@ if [[ -n ${PYTHON_FILES} ]]; then
 fi
 
 # execute yamllint on yaml files if present
+YAML_CONFIG=$(git rev-parse --show-toplevel)"/.yamllint"
 if [[ -n ${YAML_FILES} ]] && [[ -e $(which yamllint) ]]; then
 	echo -e "yamllint installed. Linting yaml files: ${YAML_FILES}"
-	if yamllint --config-data relaxed ${YAML_FILES}; then
+	if [[ -e $YAML_CONFIG ]]; then
+		YAML_CONFIG_FILE=${YAML_CONFIG}
+		echo -e "Found yamllint config file: ${YAML_CONFIG}"
+	else
+		YAML_CONFIG_FILE="relaxed"
+	fi
+	if yamllint --config-data ${YAML_CONFIG_FILE} ${YAML_FILES}; then
 		echo -e "\033[1;32mLinting successful.\033[0m"
 	else
 		echo -e "\033[38;5;167mEncountered lint issues with yaml files. Aborting push.\033[0m"
