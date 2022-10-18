@@ -7,19 +7,20 @@
 	branch = auto
 	interactive= true
 	ui = true
-
 [core]
 	excludesfile = ~/.gitignore_global
 	ignorecase = true
 	autocrlf = input
+	hookspath = ~/.githooks
 [push]
-	default = simple
+	default = upstream
 [credential]
 	helper = /cygdrive/C/Users/Patrick/AppData/Roaming/GitCredStore/git-credential-winstore.exe
 [alias]
 	tree = log --graph --oneline --decorate --color
 	treeall = log --graph --oneline --decorate --all --color
 	last = log -1 --pretty=medium
+	root = rev-parse --show-toplevel
 [merge]
 	tool = gvimdiff
 	conflictstyle = diff3
