@@ -32,10 +32,10 @@ echo "linting following yaml files:"
 echo -e "\033[2;33m $YAML_FILES \033[0m"
 
 # do not check any uncommitted changes to repo
-if ! git update-index --refresh && git diff-index --quiet @ -- ; then
+if ! (git update-index --refresh && git diff-index --quiet @ -- ) ; then
+	echo "Stashing uncommitted files..."
 	SKIP_POST_CHECKOUT_HOOK=1 git stash push --keep-index --quiet
 	PRE_PUSH_STASH_CHANGES=1
-	echo "Stashing dirty files..."
 fi
 
 unstash() {
