@@ -22,7 +22,7 @@ echo "Common commit between $LOCAL_SHA and $REMOTE_SHA is $BASE_OBJ"
 # BUG: list of changed files doesn't account for deleted files
 CHANGED_FILES=$(git diff --name-only $LOCAL_SHA $BASE_OBJ)
 echo "The following files were touched:"
-printf "\033[2;33m${CHANGED_FILES}\n\033[0m"
+echo -e "\033[2;33m${CHANGED_FILES}\n\033[0m"
 
 PYTHON_FILES=$(grep -iE "\.py$" <<< ${CHANGED_FILES})
 YAML_FILES=$(grep -iE "\.y[a]?ml$" <<< ${CHANGED_FILES})
@@ -55,6 +55,7 @@ abort_push() {
 }
 
 if [[ -n ${PYTHON_FILES} ]]; then
+	echo "Linting python files..."
 	# execute pylint tests on python files only
 	if pylint --rcfile=.pylintrc ${PYTHON_FILES}; then
 		echo -e "\033[1;32mLinting successful.\033[0m"
@@ -63,6 +64,7 @@ if [[ -n ${PYTHON_FILES} ]]; then
 		abort_push
 	fi
 
+	echo "Type-checking python files..."
 	# execute mypy on python files only
 	if mypy --config-file mypy.ini ${PYTHON_FILES}; then
 		echo -e "\033[1;32mTypechecking successful.\033[0m"
