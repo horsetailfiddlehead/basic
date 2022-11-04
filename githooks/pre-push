@@ -20,7 +20,7 @@ BASE_OBJ=$(git merge-base $LOCAL_SHA $REMOTE_SHA)
 echo "Common commit between $LOCAL_SHA and $REMOTE_SHA is $BASE_OBJ"
 
 # BUG: list of changed files doesn't account for deleted files
-CHANGED_FILES=$(git diff --name-only $LOCAL_SHA $BASE_OBJ)
+CHANGED_FILES=$(git diff --name-only $BASE_OBJ $LOCAL_SHA)
 echo "The following files were touched:"
 echo -e "\033[2;33m${CHANGED_FILES}\n\033[0m"
 
