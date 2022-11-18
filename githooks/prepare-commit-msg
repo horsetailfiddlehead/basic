@@ -38,10 +38,12 @@ if [ $result -eq 0 ]; then
 	COMMITS=${COMMITS//$'\n'/\\n}  # Need to replace newlines with literal for sed
 
 	if [ ${#DESCRIPTION} -ne 0 ]; then
-		MATCH="Merge.*"
 		INSERT="Branch description:\n$DESCRIPTION\n\nChanges:\n${COMMITS}"
-		sed -E -i "s^($MATCH)^\1\n\n$INSERT^" $COMMIT_MSG_FILE
+	else
+		INSERT="Changes:\n${COMMITS}"
 	fi
+	MATCH="Merge.*"
+	sed -E -i "s^($MATCH)^\1\n\n$INSERT^" $COMMIT_MSG_FILE
 fi
 
 
