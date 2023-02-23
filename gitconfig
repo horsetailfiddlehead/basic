@@ -21,6 +21,12 @@
 	treeall = log --graph --oneline --decorate --all --color
 	last = log -1 --pretty=medium
 	root = rev-parse --show-toplevel
+	skipped = !git ls-files -v | grep ^[[:lower:]S]
+	skip = update-index --skip-worktree
+	unskip = update-index --no-skip-worktree
+	hide = update-index --assume-unchanged
+	unhide = update-index --no-assume-unchanged
+	alias = ! git config --get-regexp ^alias | sed -e 's/^alias\\.\\(\\w\\+\\)/\\1 =>/'
 [merge]
 	tool = gvimdiff
 	conflictstyle = diff3
