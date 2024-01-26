@@ -125,6 +125,19 @@ endif
 
 " "  My additions below ""
 "----------------------------------------
+" Adjust Git commit message diff colors
+" From https://stackoverflow.com/a/74153391
+" Note: must be defined before any colorschemes
+function! DiffHighlights() abort
+    highlight diffAdded ctermfg=2 guifg=#67c12c
+    highlight diffRemoved ctermfg=1 guifg=#b82e19
+		highlight diffChanged ctermfg=3 guifg=#b89e19
+endfunction
+augroup BetterDiffColors
+    autocmd!
+    autocmd ColorScheme * call DiffHighlights()
+augroup END
+
 " Set background to improve readbility and the default colorscheme
 set background=dark
 colorscheme desert
@@ -134,9 +147,18 @@ if &t_Co > 2 || has("gui_running")
 	set t_Co=256
 endif
 
+
 " I like line numbers and the ruler
 set number
 set laststatus=2
+
+" This toggles relative numbers automatically.
+" See https://jeffkreeftmeijer.com/vim-number/
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+:augroup END
 
 " Set the font for GUI windows
 set guifont=Lucida_Console:h10:cANSI:qDRAFT
@@ -146,6 +168,8 @@ set tabstop=2
 
 " set visual indicator of ideal line length
 set colorcolumn=80
+" set line length indicator color
+highlight colorcolumn ctermbg=100 guibg=darkgrey
 
 " set the default window size (for non-CLI windows)
 if has('gui_running')
@@ -180,7 +204,7 @@ endif
 " Folding settings
 " --------------------------------------
 " Defines vim folding option as 'indent', but also allows manual folding
-augroup vimrc
+augroup setFolding
   au BufReadPre * setlocal foldmethod=indent
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
