@@ -33,6 +33,6 @@ then
 		if [[ ${REPLY} =~ [yY] ]]; then
 			git branch --edit-description < "$TTY"
 		else
-			echo "Consider writing one with git branch --edit-description"
+			echo "Consider writing one with git edit-description"
 		fi
 fi

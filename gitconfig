@@ -26,7 +26,15 @@
 	unskip = update-index --no-skip-worktree
 	hide = update-index --assume-unchanged
 	unhide = update-index --no-assume-unchanged
-	alias = ! git config --get-regexp ^alias | sed -e 's/^alias\\.\\(\\w\\+\\)/\\1 =>/'
+	alias = ! git config --get-regexp ^alias | sed -e 's/^alias\\.\\([[:alnum:]_-]\\+\\)/\\1 =>/'
+	rebase = rebase -i --rebase-merges
+	forkpoint = !"git merge-base --fork-point \"$1\" @ #"
+	show-tags = log --oneline --decorate --color --tags --no-walk
+	update-rebase = pull --rebase
+	mt = mergetool
+	pnv = push --no-verify
+	edit-description = branch --edit-description
+	description = !git config --get "branch.$(git rev-parse --abbrev-ref HEAD).description"
 [merge]
 	tool = gvimdiff
 	conflictstyle = diff3
