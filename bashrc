@@ -74,6 +74,8 @@ shopt -s cdspell     # attempts to fix cd misspells
 shopt -s nocaseglob  # case-insensitive auto-complete
 shopt -s checkwinsize #auto-adjusts COL and LINE to window
 shopt -s dotglob     # includes dot-files in glob
+shopt -s histverify  # expand history lookups for confirmation
+shopt -s histreedit  # redisplay command when history expansion fails
 export EDITOR=vim
 
 # connect to attu servers
